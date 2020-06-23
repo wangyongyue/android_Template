@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">kuai</string>
+
+
+    <string name="server">com.example.kuai.servers.Server</string>
+
 </resources>

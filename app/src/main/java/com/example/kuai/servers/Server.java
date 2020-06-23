@@ -1,13 +1,15 @@
 package com.example.kuai.servers;
 
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.kuai.controllers.Main2Activity;
 import com.example.kuai.views.cells.LinearModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
-
+    public Object obj;
+    public Class controller(){ return Main2Activity.class;}
     public int scrollDirection(){return RecyclerView.VERTICAL; }
     public List<Object> loadNavigationData(Object reponse){
 
