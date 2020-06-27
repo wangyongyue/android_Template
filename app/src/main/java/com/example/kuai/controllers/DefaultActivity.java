@@ -14,14 +14,14 @@ import com.example.kuai.views.linearAdapter.LinearAdapter;
 
 import java.util.List;
 
-public class Main2Activity extends AppCompatActivity {
+public class DefaultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
-        Router.shared().context(Main2Activity.this);
+        Router.shared().context(DefaultActivity.this);
 
         Server server = Router.shared().server();
         List<Object> list = server.loadTableData(null);

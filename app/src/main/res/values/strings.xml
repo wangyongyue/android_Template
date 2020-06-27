@@ -3,5 +3,9 @@
 
 
     <string name="server">com.example.kuai.servers.Server</string>
+    <string name="home">com.example.kuai.servers.Home</string>
+    <string name="search">com.example.kuai.servers.Search</string>
+    <string name="mine">com.example.kuai.servers.Mine</string>
+
 
 </resources>

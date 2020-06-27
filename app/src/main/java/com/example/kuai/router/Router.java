@@ -3,7 +3,6 @@ package com.example.kuai.router;
 import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.kuai.controllers.Main2Activity;
 import com.example.kuai.servers.Server;
 
 import java.util.ArrayList;
@@ -22,8 +21,6 @@ public class Router {
     public void push(int server){
         if (activitys.size() == 0){return;}
         Context context = activitys.get(activitys.size() - 1);
-        Intent intent = new Intent(context, Main2Activity.class);
-        context.startActivity(intent);
 
         try {
 
@@ -31,6 +28,10 @@ public class Router {
             Class<?> classd = Class.forName(classStr);
             Server se = (Server) classd.newInstance();
             servers.add(se);
+
+            Intent intent = new Intent(context, se.controller());
+            context.startActivity(intent);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -43,8 +44,7 @@ public class Router {
     public void push(int server,Object params) {
         if (activitys.size() == 0){return;}
         Context context = activitys.get(activitys.size() - 1);
-        Intent intent = new Intent(context, Main2Activity.class);
-        context.startActivity(intent);
+
 
         try {
             String classStr = context.getString(server);
@@ -52,6 +52,10 @@ public class Router {
             Server se = (Server) classd.newInstance();
             se.obj = params;
             servers.add(se);
+
+            Intent intent = new Intent(context, se.controller());
+            context.startActivity(intent);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

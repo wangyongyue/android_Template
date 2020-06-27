@@ -1,18 +1,16 @@
 package com.example.kuai;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import com.example.kuai.controllers.Main2Activity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.example.kuai.controllers.DefaultFragment;
 import com.example.kuai.router.Router;
-import com.example.kuai.servers.Server;
-import com.example.kuai.views.flowLayout.FlowLayout;
-import com.example.kuai.views.linearAdapter.LinearAdapter;
-
-import java.util.List;
+import com.example.kuai.servers.Home;
+import com.example.kuai.servers.Mine;
+import com.example.kuai.servers.Search;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,23 +18,58 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Router.shared().context(MainActivity.this);
 
-        Server server = new Server();
-        List<Object> list = server.loadTableData(null);
 
-        RecyclerView table = (RecyclerView)findViewById(R.id.table);
-        FlowLayout layout = new FlowLayout(this,list);
-        layout.scrollDirection = server.scrollDirection();
-        table.setLayoutManager(layout);
-        LinearAdapter adapter = new LinearAdapter(this,list);
-        table.setAdapter(adapter);
-        adapter.tableIndex(new AdapterView.OnItemClickListener() {
+
+        final DefaultFragment fragment = new DefaultFragment(new Home());
+        final DefaultFragment fragment1 = new DefaultFragment(new Search());
+        final DefaultFragment fragment2 = new DefaultFragment(new Mine());
+        FragmentManager fm=getSupportFragmentManager();
+        FragmentTransaction ft=fm.beginTransaction();
+        ft.replace(R.id.main_container,fragment);
+        ft.commit();
+
+
+        Button home = (Button) findViewById(R.id.one);
+        Button search = (Button) findViewById(R.id.two);
+        Button mine = (Button) findViewById(R.id.three);
+
+        home.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("dsdf",String.format("%s",i));
-                Router.shared().push(R.string.server);
+            public void onClick(View view) {
+
+                FragmentManager fm=getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.main_container,fragment);
+                ft.commit();
+
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fm=getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.main_container,fragment1);
+                ft.commit();
+
+            }
+        });
+
+        mine.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fm=getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.main_container,fragment2);
+                ft.commit();
+
             }
         });
 
