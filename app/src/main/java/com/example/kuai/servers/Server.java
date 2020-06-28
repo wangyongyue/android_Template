@@ -6,10 +6,13 @@ import com.example.kuai.views.cells.LinearModel;
 import com.example.kuai.views.cells.NavItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Server {
     public Object obj;
+    public String url(){return "";}
+    public HashMap body(){return new HashMap();}
     public Class controller(){ return DefaultActivity.class;}
     public int scrollDirection(){return RecyclerView.VERTICAL; }
     public List<Object> loadNavigationData(Object reponse){
