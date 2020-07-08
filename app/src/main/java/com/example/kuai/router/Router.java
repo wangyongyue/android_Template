@@ -29,8 +29,8 @@ public class Router {
             Server se = (Server) classd.newInstance();
             servers.add(se);
 
-            Intent intent = new Intent(context, se.controller());
-            context.startActivity(intent);
+//            Intent intent = new Intent(context, se.controller());
+//            context.startActivity(intent);
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -46,23 +46,6 @@ public class Router {
         Context context = activitys.get(activitys.size() - 1);
 
 
-        try {
-            String classStr = context.getString(server);
-            Class<?> classd = Class.forName(classStr);
-            Server se = (Server) classd.newInstance();
-            se.obj = params;
-            servers.add(se);
-
-            Intent intent = new Intent(context, se.controller());
-            context.startActivity(intent);
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
     }
     public void pop(){
 

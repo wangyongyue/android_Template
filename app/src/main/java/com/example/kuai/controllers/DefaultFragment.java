@@ -14,8 +14,6 @@ import com.example.kuai.servers.Server;
 import com.example.kuai.views.flowLayout.FlowLayout;
 import com.example.kuai.views.linearAdapter.LinearAdapter;
 
-import java.util.List;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -39,28 +37,13 @@ public class DefaultFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main2, container, false);
 
-        List<Object> listNav = this.server.loadNavigationData(null);
-        List<Object> list = this.server.loadTableData(null);
-
-
-        RecyclerView navigation = (RecyclerView)view.findViewById(R.id.navigation);
-        FlowLayout layoutNavigation = new FlowLayout(getActivity(),listNav);
-        layoutNavigation.scrollDirection = server.scrollDirection();
-        navigation.setLayoutManager(layoutNavigation);
-        LinearAdapter adapterNav = new LinearAdapter(getActivity(),listNav);
-        navigation.setAdapter(adapterNav);
-        adapterNav.tableIndex(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("navigation",String.format("%s",i));
-            }
-        });
+        this.server.loadTableData(null);
 
         RecyclerView table = (RecyclerView)view.findViewById(R.id.table);
-        FlowLayout layout = new FlowLayout(getActivity(),list);
-        layout.scrollDirection = server.scrollDirection();
+        FlowLayout layout = new FlowLayout(getActivity(),this.server.list);
+        layout.scrollDirection = RecyclerView.VERTICAL;
         table.setLayoutManager(layout);
-        LinearAdapter adapter = new LinearAdapter(getActivity(),list);
+        LinearAdapter adapter = new LinearAdapter(getActivity(),this.server.list);
         table.setAdapter(adapter);
         adapter.tableIndex(new AdapterView.OnItemClickListener() {
             @Override

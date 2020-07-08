@@ -12,9 +12,9 @@ import com.example.kuai.servers.Server;
 import com.example.kuai.views.flowLayout.FlowLayout;
 import com.example.kuai.views.linearAdapter.LinearAdapter;
 
-import java.util.List;
-
 public class DefaultActivity extends AppCompatActivity {
+    private Server server;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +23,14 @@ public class DefaultActivity extends AppCompatActivity {
 
         Router.shared().context(DefaultActivity.this);
 
-        Server server = Router.shared().server();
-        List<Object> list = server.loadTableData(null);
+        this.server = Router.shared().server();
+        this.server.loadTableData(null);
 
         RecyclerView table = (RecyclerView)findViewById(R.id.table);
-        FlowLayout layout = new FlowLayout(this,list);
-        layout.scrollDirection = server.scrollDirection();
+        FlowLayout layout = new FlowLayout(this,this.server.list);
+        layout.scrollDirection =  RecyclerView.VERTICAL;
         table.setLayoutManager(layout);
-        LinearAdapter adapter = new LinearAdapter(this,list);
+        LinearAdapter adapter = new LinearAdapter(this,this.server.list);
         table.setAdapter(adapter);
         adapter.tableIndex(new AdapterView.OnItemClickListener() {
             @Override
