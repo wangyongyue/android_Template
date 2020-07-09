@@ -1,18 +1,15 @@
-package com.example.kuai;
+package com.example.kuai.servers.main;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.kuai.R;
+import com.example.kuai.controllers.BaseActivity;
 import com.example.kuai.controllers.DefaultFragment;
-import com.example.kuai.router.Router;
-import com.example.kuai.servers.Home;
-import com.example.kuai.servers.Mine;
-import com.example.kuai.servers.Search;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
     @Override
@@ -20,9 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Router.shared().context(MainActivity.this);
-
-
 
         final DefaultFragment fragment = new DefaultFragment(new Home());
         final DefaultFragment fragment1 = new DefaultFragment(new Search());
@@ -69,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction ft=fm.beginTransaction();
                 ft.replace(R.id.main_container,fragment2);
                 ft.commit();
+
+
 
             }
         });

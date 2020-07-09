@@ -28,8 +28,6 @@ public class DefaultFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -48,8 +46,8 @@ public class DefaultFragment extends Fragment {
         adapter.tableIndex(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("dsdf",String.format("%s",i));
-                Router.shared().push(R.string.server);
+                Log.d("fragment",String.format("%s",i));
+                server.tableIndex(i);
             }
         });
 

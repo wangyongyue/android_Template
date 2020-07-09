@@ -12,8 +12,8 @@ import com.example.kuai.servers.Server;
 import com.example.kuai.views.flowLayout.FlowLayout;
 import com.example.kuai.views.linearAdapter.LinearAdapter;
 
-public class DefaultActivity extends AppCompatActivity {
-    private Server server;
+public class DefaultActivity extends BaseActivity {
+    public Server server;
 
 
     @Override
@@ -21,9 +21,7 @@ public class DefaultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Router.shared().context(DefaultActivity.this);
 
-        this.server = Router.shared().server();
         this.server.loadTableData(null);
 
         RecyclerView table = (RecyclerView)findViewById(R.id.table);
@@ -36,11 +34,9 @@ public class DefaultActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("dsdf",String.format("%s",i));
-                Router.shared().pop();
+                server.tableIndex(i);
             }
         });
-
-
 
 
     }

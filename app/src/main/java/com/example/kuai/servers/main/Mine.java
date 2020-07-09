@@ -1,8 +1,9 @@
-package com.example.kuai.servers;
+package com.example.kuai.servers.main;
 
+import com.example.kuai.servers.Server;
 import com.example.kuai.views.cells.LinearModel;
 
-public class Home extends Server {
+public class Mine extends Server {
 
     @Override
     public void loadTableData(Object reponse){

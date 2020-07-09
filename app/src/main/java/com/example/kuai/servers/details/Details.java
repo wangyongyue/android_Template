@@ -1,8 +1,9 @@
-package com.example.kuai.servers;
+package com.example.kuai.servers.details;
 
+import com.example.kuai.servers.Server;
 import com.example.kuai.views.cells.LinearModel;
 
-public class Search extends Server{
+public class Details extends Server {
 
     @Override
     public void loadTableData(Object reponse){
@@ -10,7 +11,7 @@ public class Search extends Server{
         for(int i=0;i<30;i++){
 
             LinearModel m = new LinearModel();
-            m.name = String.format("Home%s-%s", i/10+1,i);
+            m.name = String.format("Details%s-%s", i/10+1,i);
             list.add(m);
         }
     }
@@ -18,5 +19,4 @@ public class Search extends Server{
     public void tableIndex(int index){
 
     }
-
 }
