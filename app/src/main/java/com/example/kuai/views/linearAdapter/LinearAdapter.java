@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,7 +15,7 @@ public class LinearAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolder
     private Context mContext;
     //展示的数据
     private List<Object> list;
-    private AdapterView.OnItemClickListener onItemClickListener;
+    private LinearAdapter.OnIndexListener onIndexListener;
     public LinearAdapter(Context context,List<Object> list){
         this.mContext=context;
         this.list = list;
@@ -64,25 +63,24 @@ public class LinearAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolder
             e.printStackTrace();
         }
         holder.itemView.setOnClickListener(new View.OnClickListener(){
-
-            AdapterView.OnItemClickListener listener = onItemClickListener;
             @Override
             public void onClick(View view) {
-                onItemClickListener.onItemClick(null,null,position,0);
+                onIndexListener.onIndex(position);
             }
         });
     }
-    public void tableIndex(AdapterView.OnItemClickListener onItemClickListener){
-
-        this.onItemClickListener = onItemClickListener;
-
+    public void tableIndex(LinearAdapter.OnIndexListener l){
+        this.onIndexListener = l;
     }
-
     @Override
     public int getItemCount() {
         return list.size();
     }
 
+
+    public interface OnIndexListener {
+        void onIndex(int index);
+    }
 
 
 }

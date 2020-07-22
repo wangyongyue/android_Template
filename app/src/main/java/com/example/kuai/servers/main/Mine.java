@@ -11,7 +11,7 @@ public class Mine extends Server {
         for(int i=0;i<30;i++){
 
             LinearModel m = new LinearModel();
-            m.name = String.format("Home%s-%s", i/10+1,i);
+            m.name = String.format("Mine%s-%s", i/10+1,i);
             list.add(m);
         }
     }
