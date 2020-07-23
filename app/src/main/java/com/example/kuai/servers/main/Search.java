@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.example.kuai.router.Router;
 import com.example.kuai.servers.Server;
-import com.example.kuai.servers.details.DetailsActivity;
+import com.example.kuai.controllers.DetailsActivity;
 import com.example.kuai.views.cells.LinearModel;
 
 public class Search extends Server {

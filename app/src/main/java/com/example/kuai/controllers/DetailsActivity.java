@@ -1,8 +1,8 @@
-package com.example.kuai.servers.details;
+package com.example.kuai.controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.kuai.controllers.DefaultActivity;
+import com.example.kuai.base.DefaultActivity;
+import com.example.kuai.servers.main.Details;
 
 public class DetailsActivity extends DefaultActivity {
 

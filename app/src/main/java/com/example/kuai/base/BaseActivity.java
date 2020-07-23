@@ -1,9 +1,8 @@
-package com.example.kuai.controllers;
+package com.example.kuai.base;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.kuai.router.Router;
-import com.example.kuai.servers.main.MainActivity;
 
 public class BaseActivity extends AppCompatActivity {
 

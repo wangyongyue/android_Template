@@ -1,4 +1,4 @@
-package com.example.kuai.controllers;
+package com.example.kuai.base;
 
 import android.os.Bundle;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +15,7 @@ public class DefaultActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        
+
         RecyclerView table = (RecyclerView)findViewById(R.id.table);
         FlowLayout layout = new FlowLayout(this,this.server.list);
         layout.scrollDirection =  RecyclerView.VERTICAL;

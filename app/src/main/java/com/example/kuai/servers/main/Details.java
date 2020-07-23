@@ -1,4 +1,4 @@
-package com.example.kuai.servers.details;
+package com.example.kuai.servers.main;
 
 import com.example.kuai.servers.Server;
 import com.example.kuai.views.cells.LinearModel;

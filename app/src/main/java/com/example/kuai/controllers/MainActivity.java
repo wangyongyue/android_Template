@@ -1,4 +1,4 @@
-package com.example.kuai.servers.main;
+package com.example.kuai.controllers;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,8 +6,11 @@ import android.widget.Button;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.kuai.R;
-import com.example.kuai.controllers.BaseActivity;
-import com.example.kuai.controllers.DefaultFragment;
+import com.example.kuai.base.BaseActivity;
+import com.example.kuai.base.DefaultFragment;
+import com.example.kuai.servers.main.Home;
+import com.example.kuai.servers.main.Mine;
+import com.example.kuai.servers.main.Search;
 
 public class MainActivity extends BaseActivity {
 
