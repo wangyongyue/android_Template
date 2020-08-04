@@ -10,7 +10,7 @@ import com.example.kuai.views.linearAdapter.LinearAdapter;
 public class DefaultActivity extends BaseActivity {
     public Server server;
 
-
+    public LinearAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class DefaultActivity extends BaseActivity {
         FlowLayout layout = new FlowLayout(this,this.server.list);
         layout.scrollDirection =  RecyclerView.VERTICAL;
         table.setLayoutManager(layout);
-        final LinearAdapter adapter = new LinearAdapter(this,this.server.list);
+        adapter = new LinearAdapter(this,this.server.list);
         table.setAdapter(adapter);
         adapter.tableIndex(new LinearAdapter.OnIndexListener() {
             @Override
@@ -31,11 +31,15 @@ public class DefaultActivity extends BaseActivity {
         this.server.reloadData(new Server.OnDataListener() {
             @Override
             public void reload() {
-                adapter.notifyDataSetChanged();
+                reloadData();
             }
         });
         server.networkRequest();
 
 
+    }
+    public void reloadData(){
+
+        adapter.notifyDataSetChanged();
     }
 }

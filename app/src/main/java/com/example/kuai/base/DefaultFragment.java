@@ -18,6 +18,7 @@ import com.example.kuai.views.linearAdapter.LinearAdapter;
 public class DefaultFragment extends Fragment {
 
     private Server server;
+    private LinearAdapter adapter;
 
     public DefaultFragment(Server server) {
         this.server = server;
@@ -37,7 +38,7 @@ public class DefaultFragment extends Fragment {
         FlowLayout layout = new FlowLayout(getActivity(),this.server.list);
         layout.scrollDirection = RecyclerView.VERTICAL;
         table.setLayoutManager(layout);
-        final LinearAdapter adapter = new LinearAdapter(getActivity(),this.server.list);
+        adapter = new LinearAdapter(getActivity(),this.server.list);
         table.setAdapter(adapter);
         adapter.tableIndex(new LinearAdapter.OnIndexListener() {
             @Override
@@ -49,12 +50,15 @@ public class DefaultFragment extends Fragment {
         this.server.reloadData(new Server.OnDataListener() {
             @Override
             public void reload() {
-                adapter.notifyDataSetChanged();
+                reloadData();
             }
         });
         server.networkRequest();
         return view;
 
     }
+    public void reloadData(){
 
+        adapter.notifyDataSetChanged();
+    }
 }
